@@ -1,96 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<?php
-			include_once('_head/meta.php');
-		?>
-        <title>Daewen</title>
-        <?php
-			include_once('_head/link.php');
-			include_once('_head/script.php');
-		?>
-	</head>
-	<body>
-		<?php
-			include_once 'menu.php';
-		
-			if(!isset($_SESSION['id'])){
-		?>
-		<div class="container"  style="text-align: center">
-			<div class="row">
-				<div class="col-12 col-md-12 col-xl-12" style="margin: 20px 0">
-					<h1 style="margin-bottom: 20px">Venez comme vous êtes !</h1>
-					<i class="fa fa-venus-mars fa-size"></i>
-					<i class="fa fa-venus-double fa-size"></i>
-					<i class="fa fa-venus fa-size"></i>
-					<i class="fa fa-transgender-alt fa-size"></i>
-					<i class="fa fa-transgender fa-size"></i>
-					<i class="fa fa-neuter fa-size"></i>
-					<i class="fa fa-mercury fa-size"></i>
-					<i class="fa fa-mars-stroke-v fa-size"></i>
-					<i class="fa fa-mars-stroke-h fa-size"></i>
-					<i class="fa fa-mars-stroke fa-size"></i>
-					<i class="fa fa-mars-double fa-size"></i>
-					<i class="fa fa-mars fa-size"></i>
-				</div>
-				<div class="col-12 col-md-12 col-xl-6">
-			    	<h2>Plus cool <i class="fa fa-beer"></i></h2>
-					<i class="fa fa-codepen" style="font-size: 40px; color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #e74c3c,#f39c12);"></i>
-				</div>
-				<div class="col-12 col-md-12 col-xl-6">
-				    <h2>Plus rapide <i class="fa fa-plane"></i></h2>
-					<i class="fa fa-tachometer" style="font-size: 40px; color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #e74c3c,#f39c12);"></i>
-				</div>
-			</div>
-			<section style="text-align: center">
-				<i class="fa fa-gg" style="font-size: 150px; color: transparent; -webkit-background-clip: text; background-clip: text; background-image: linear-gradient(to right, #e74c3c,#f39c12);"></i>			
-				<h1>Créer de nouveaux liens</h1>
-			</section>
-		</div>
-		<?php
-			}else{	
-		?>	
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-md-12 col-xl-12" style="margin: 20px 0">
-					<div class="signin__body">
-						<div class="">
-							Derniers membres inscrits
-						</div>
-						<div class="row">
-							<?php 
-								$req = $DB->prepare("SELECT u.*, o.id as is_online
-									FROM user u
-									LEFT JOIN online o ON o.pseudo_id = u.id
-									ORDER BY u.date_registration DESC 
-									LIMIT 0, 12");
-								$req->execute(array());
-								
-								$chose_color = 0;
-								
-							foreach($req as $r){						
-								$En_ligne = "";
-								if(isset($r['is_online'])){
-									$En_ligne = "<div class='Online'></div>";
-								} ?>
-								<div class="col-4 col-md-2 col-xl-3" style="text-align: center">
-									<a href="<?= URL ?>profil/<?= $r['guid'] ?>">
-										<img src="<?= URL . $__User->getAvatar($r['guid']) ?>" style="width: 80px; max-width: 100%; border-radius: 100px; margin: 10px 0"/>
-									</a>
-								</div>
-								<?php
-								} 
-							?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php	
-			}
-			
-			include_once('_footer/footer.php');
-		?>
-	</body>
-</html>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="https://www.wedrop.fr/wp-content/uploads/2016/12/1Stockage-et-lecture-en-ligne.png" alt="" width="64" height="64">
+        </a>
+        <nav class="navbar navbar-expand-sm float-right">
+	  
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+            
+                <li class="nav-item ">
+                    <a class = "nav-link" href="inscription1.php"> S'inscrire </a>
+                </li>
+                <li class="nav-item ">
+                  <form class = "navbar-right">
+                    <a class = "nav-link" href="connexion1.php"> Se connecter </a>
+                  </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
