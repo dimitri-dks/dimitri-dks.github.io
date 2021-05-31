@@ -17,13 +17,9 @@
   </head>
   <body>
      
-    <!-- Affichage du menu en fonction de la connexion -->
-    <% Pseudo pseudo = request.getAttribute("peudo");
-    if (pseudo) != null) { %>
-      <jsp:include page="/menu2.jsp"></jsp:include> <% } 
-    else { %>
+  
       <jsp:include page="/menu.jsp"></jsp:include>
-   <% } %>
+  
    
     <div class="centre">
     <embed src=https://lewebpedagogique.com/alivresouverts/files/2013/09/commentfairedesfichespourrevisersescours.pdf width=800 height=600 type='application/pdf'/>
